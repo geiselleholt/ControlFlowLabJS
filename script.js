@@ -1,4 +1,5 @@
 // PART 1
+console.log(`PART 1`);
 // The area in which the plants are contained is circular, with a radius of 5 meters.
 // The formula for calculating the area of a circle is PI multiplied by the radius, squared:
 // const PI = 3.1415;
@@ -12,7 +13,6 @@ const PI = 3.1415;
 const area = PI * radius * radius;
 const minimumSpace = 0.8;
 const plantCount = 20;
-
 let weekNumber = 3;
 let newPlantCount = plantCount * 2 ** weekNumber;
 let plantArea = newPlantCount * minimumSpace;
@@ -28,25 +28,47 @@ let plantArea = newPlantCount * minimumSpace;
 // Within your submission, include the results for 1, 2, and 3 weeks of growth as inputs.
 
 console.log(`The total planting area is ${area} square meters`);
-console.log(`80% of the area is ${area * 0.8} square meters`);
-console.log(`50% of the area is ${area * 0.5} square meters`);
+console.log(`80% of the planting area is ${area * 0.8} square meters`);
+console.log(`50% of the planting area is ${area * 0.5} square meters`);
 
-if (plantArea >= area * 0.8) {
-  console.log(
-    `The current area the plants are using is ${plantArea} square meters so you should Prune`
-  );
-} else if (plantArea >= area * 0.5) {
-  console.log(
-    `The current area the plants are using is ${plantArea} square meters, so you should Monitor`
-  );
-} else {
-  console.log(
-    `The current area the plants are using is ${plantArea} square meters, so you should Plant`
-  );
+try {
+  if (plantArea > area) {
+    throw `Error: Plant area = ${plantArea}. Space required to hold the plants exceeds the amount of space available`;
+  } else if (plantArea >= area * 0.8) {
+    console.log(
+      `The current area the plants are using is ${plantArea} square meters so you should Prune`
+    );
+  } else if (plantArea >= area * 0.5) {
+    console.log(
+      `The current area the plants are using is ${plantArea} square meters, so you should Monitor`
+    );
+  } else {
+    console.log(
+      `The current area the plants are using is ${plantArea} square meters, so you should Plant`
+    );
+  }
+} catch (err) {
+  console.log(err);
 }
 
 // PART 2
+console.log(`PART 2`);
 // The conservation area in which the garden is located has multiple other gardens.
 // Using the logic you have already created, determine:
 // The amount of additional space that would be required if the scientists were to start with 100 plants, and did not prune them for 10 weeks.
 // If the space remained circular, what would be the radius of this expanded garden?
+
+let plantCount2 = 100;
+let weekNumber2 = 10;
+let newPlantCount2 = plantCount2 * 2 ** weekNumber2;
+let plantArea2 = newPlantCount2 * minimumSpace;
+let additionalSpaceRequired = plantArea2 - area;
+let radius2 = Math.sqrt(additionalSpaceRequired / PI);
+console.log(
+  `The additional space required would be ${additionalSpaceRequired} square meters`
+);
+console.log(`The radius of the garden would be ${radius2} square meters`);
+
+// PART 3
+// The scientists decided not to listen to your recommendations, and have instead started with 100 plants in the original 5-meter-radius garden.
+// Use try and catch to wrap your work in an error-handling block. If the amount of space required to hold the originally provided number of plants exceeds the amount of space available, throw a new error and log an appropriate message.
