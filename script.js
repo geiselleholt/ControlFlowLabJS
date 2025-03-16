@@ -13,7 +13,7 @@ const PI = 3.1415;
 const area = Math.round(PI * radius * radius);
 const minimumSpace = 0.8;
 const plantCount = 20;
-let weekNumber = 3;
+const weekNumber = 3;
 let newPlantCount = plantCount * 2 ** weekNumber;
 let plantArea = Math.round(newPlantCount * minimumSpace);
 
@@ -58,8 +58,8 @@ console.log(`PART 2`);
 // The amount of additional space that would be required if the scientists were to start with 100 plants, and did not prune them for 10 weeks.
 // If the space remained circular, what would be the radius of this expanded garden?
 
-let plantCount2 = 100;
-let weekNumber2 = 10;
+const plantCount2 = 100;
+const weekNumber2 = 10;
 let newPlantCount2 = plantCount2 * 2 ** weekNumber2;
 let plantArea2 = Math.round(newPlantCount2 * minimumSpace);
 let additionalSpaceRequired = plantArea2 - area;
@@ -67,7 +67,7 @@ let radius2 = Math.round(Math.sqrt(additionalSpaceRequired / PI));
 console.log(
   `The additional space required would be ${additionalSpaceRequired} square meters`
 );
-console.log(`The radius of the expanded garden would be ${radius2}`);
+console.log(`The radius of the expanded garden would be ${radius2} meters`);
 
 // PART 3
 // The scientists decided not to listen to your recommendations, and have instead started with 100 plants in the original 5-meter-radius garden.
